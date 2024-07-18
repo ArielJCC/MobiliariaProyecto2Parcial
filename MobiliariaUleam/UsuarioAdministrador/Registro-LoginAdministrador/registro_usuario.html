@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuario Administrador</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Icono Página -->
+    <link rel="icon" href="IMGC/Mobiliaria-Uleam_transparent.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  </head>
+  <body
+    style="background-image: url('IMGC/photo2.jpg'); background-size: cover"
+  >
+    <div id="app" class="container">
+      <form @submit.prevent="submitForm">
+        <h2>REGISTRO DE USUARIO ADMINISTRADOR</h2>
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            v-model="nombreCompleto"
+            placeholder="Nombre Completo"
+            required
+            pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+            title="Ingrese solo letras"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            v-model="nombreUsuario"
+            placeholder="Nombre de usuario"
+            required
+            pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ0-9\s]+"
+            title="Ingrese solo letras y números"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-id-card"></i>
+          <input
+            type="text"
+            v-model="numeroCedula"
+            placeholder="Número de Cédula"
+            required
+            pattern="[0-9]{10}"
+            title="Ingresar un número de cédula válido(10 Dígitos)"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            v-model="correoElectronico"
+            placeholder="Correo Electrónico"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            title="Ingrese un correo electrónico válido"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            v-model="contrasena"
+            placeholder="Contraseña"
+            required
+            pattern=".{6,}"
+            title="La contraseña debe tener al menos 6 caracteres"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            v-model="confirmarContrasena"
+            placeholder="Confirmar Contraseña"
+            required
+          />
+        </div>
+        <button type="submit">Registrarse</button>
+        <p style="text-align: center">
+          ¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          nombreCompleto: "",
+          nombreUsuario: "",
+          numeroCedula: "",
+          correoElectronico: "",
+          contrasena: "",
+          confirmarContrasena: "",
+        },
+        methods: {
+          submitForm() {
+            if (this.validarFormulario()) {
+              var usuario = {
+                nombreCompleto: this.nombreCompleto,
+                nombreUsuario: this.nombreUsuario,
+                numeroCedula: this.numeroCedula,
+                correoElectronico: this.correoElectronico,
+                contrasena: this.contrasena,
+              };
+
+              //  Almacenamiento en localStorage
+              var registroUsuarios =
+                JSON.parse(localStorage.getItem("registroUsuarios")) || [];
+              registroUsuarios.push(usuario);
+              localStorage.setItem(
+                "registroUsuarios",
+                JSON.stringify(registroUsuarios)
+              );
+
+              // Guardar el nombre de usuario y correo electrónico actual
+              localStorage.setItem("usuarioActualAdmin", this.nombreUsuario);
+              localStorage.setItem("correoActualAdmin", this.correoElectronico);
+
+              // Redirigir  a la página de login
+              window.location.href = "login.html";
+            } else {
+              alert(
+                "Por favor, verifica que todos los campos estén correctos."
+              );
+            }
+          },
+          validarFormulario() {
+            // Validación simple de contraseña
+            if (this.contrasena !== this.confirmarContrasena) {
+              alert("Las contraseñas no coinciden. Por favor, verifique.");
+              return false;
+            }
+            return true;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

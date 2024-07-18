@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Perfil de usuario de Uleam" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Uleam - Perfil de usuario</title>
+    <link
+      rel="icon"
+      href="../Imagenes/icon/Mobiliaria-UleamAdmin_transparent.ico"
+    />
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styleC.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header class="header-area">
+      <div class="top-header">
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 h-100">
+              <div
+                class="header-content h-100 d-flex align-items-center justify-content-between"
+              >
+                <a href="HomeCliente.html" class="logo-link">
+                  <img
+                    src="../Imagenes/Mobiliaria-Uleam.png"
+                    alt="Logo Uleam"
+                    class="logo-img"
+                  />
+                </a>
+                <div class="login-content">
+                  <a href="perfilCliente.html">Perfil &nbsp;</a>
+                  <a
+                    href="javascript:void(0);"
+                    onclick="confirmarCerrarSesion()"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Barra de navegación -->
+      <div class="academy-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+          <div class="container">
+            <nav class="classy-navbar justify-content-between" id="academyNav">
+              <div class="classy-menu">
+                <div class="classycloseIcon">
+                  <div class="cross-wrap">
+                    <span class="top"></span><span class="bottom"></span>
+                  </div>
+                </div>
+                <div class="classynav">
+                  <ul>
+                    <li><a href="HomeCliente.html">Inicio</a></li>
+                    <li><a href="inventarioCliente.html">Inventario</a></li>
+                    <li>
+                      <a href="https://wa.link/cj230k" target="_blank"
+                        >Contáctanos</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Perfil de usuario -->
+    <div id="app" class="breadcumb-area">
+      <div class="bradcumbContent">
+        <div class="user-profile-section">
+          <h2>Perfil de Usuario</h2>
+          <div class="user-info">
+            <!-- Mostrar el nombre de usuario y correo electrónico -->
+            <div class="mt-4 text-center">
+              <p><strong>Usuario:</strong> {{ usuarioActualCliente }}</p>
+            </div>
+            <div class="mt-4 text-center">
+              <p>
+                <strong>E-mail:</strong> {{ correoElectronicoActualCliente }}
+              </p>
+            </div>
+            <!-- Lista de mobiliarios asignados -->
+            <div
+              class="section-heading text-center mx-auto wow fadeInUp"
+              data-wow-delay="300ms"
+            >
+              <h3>Tus Mobiliarios Asignados</h3>
+              <ul v-if="mobiliariosAsignados.length > 0">
+                <li
+                  v-for="(mobiliario, index) in mobiliariosAsignados"
+                  :key="index"
+                >
+                  Tipo: {{ mobiliario.deviceType }} - Código: {{
+                  mobiliario.codigoIdentificacion }} - Material: {{
+                  mobiliario.material }} - Color: {{ mobiliario.color }}
+                </li>
+              </ul>
+              <p v-else>No tienes mobiliarios asignados actualmente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pie de página -->
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <a href="HomeCliente.html" class="logo-link">
+            <img
+              src="../Imagenes/Mobiliaria-Uleam.png"
+              alt="Logo Uleam"
+              class="logo-img"
+            />
+          </a>
+        </div>
+        <div class="box">
+          <h2>MISIÓN</h2>
+          <p>
+            En la Uleam, nos comprometemos con una gestión eficiente y
+            responsable del inventario de mobiliario.
+          </p>
+        </div>
+        <div class="box">
+          <h2>SÍGUENOS</h2>
+          <div class="red-social">
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+          </div>
+        </div>
+      </div>
+      <div class="grupo-2">
+        <small
+          >&copy; 2024 Uleam - Gestión de Inventario de Mobiliario - Todos los
+          derechos reservados</small
+        >
+      </div>
+    </footer>
+    <!-- JavaScript e instancia Vue -->
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          usuarioActualCliente: "",
+          correoElectronicoActualCliente: "",
+          mobiliariosAsignados: [],
+        },
+        mounted() {
+          this.usuarioActualCliente =
+            localStorage.getItem("usuarioActualCliente") ||
+            "Usuario no encontrado";
+          this.correoElectronicoActualCliente =
+            localStorage.getItem("correoElectronicoActualCliente") ||
+            "Correo no encontrado";
+
+          // Cargar mobiliarios asignados del localStorage
+          const registros =
+            JSON.parse(localStorage.getItem("registroUsuariosCliente")) || [];
+          const usuarioEncontrado = registros.find(
+            (user) => user.nombreUsuario === this.usuarioActualCliente
+          );
+          if (usuarioEncontrado && usuarioEncontrado.mobiliariosAsignados) {
+            this.mobiliariosAsignados = usuarioEncontrado.mobiliariosAsignados;
+          }
+        },
+      });
+      // Confirmar el cierre de sesión
+      function confirmarCerrarSesion() {
+        // Mostrar el mensaje de confirmación
+        var confirmacion = confirm(
+          "¿Estás seguro de que deseas cerrar la sesión?"
+        );
+        // Si el usuario hace clic en "Aceptar", redirige a la página de inicio de sesión
+        if (confirmacion) {
+          window.location.href = "Registro-LoginCliente/loginCliente.html";
+        }
+        // Si el usuario hace clic en "Cancelar", no hace nada
+      }
+    </script>
+  </body>
+</html>

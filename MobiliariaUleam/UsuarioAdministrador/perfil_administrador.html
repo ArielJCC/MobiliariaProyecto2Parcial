@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Perfil de usuario de Uleam" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Uleam - Perfil de Administrador</title>
+     <link rel="icon" href="../Imagenes/icon/Mobiliaria-Uleam_transparent.ico" />
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <header class="header-area">
+      <div class="top-header">
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 h-100">
+              <div
+                class="header-content h-100 d-flex align-items-center justify-content-between"
+              >
+                <a href="Home.html" class="logo-link">
+                  <img
+                    src="../Imagenes/Mobiliaria-Uleam.png"
+                    alt="Logo"
+                    class="logo-img"
+                  />
+                </a>
+                <div class="login-content">
+                  <a href="perfil_administrador.html">Perfil &nbsp;</a>
+                  <a
+                    href="javascript:void(0);"
+                    onclick="confirmarCerrarSesion()"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Barra de navegación -->
+      <div class="academy-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+          <div class="container">
+            <nav class="classy-navbar justify-content-between" id="academyNav">
+              <div class="classy-menu">
+                <div class="classycloseIcon">
+                  <div class="cross-wrap">
+                    <span class="top"></span><span class="bottom"></span>
+                  </div>
+                </div>
+                <div class="classynav">
+                  <ul>
+                    <li><a href="Home.html">Inicio</a></li>
+                    <li><a href="inventario.html">Inventario</a></li>
+                    <li>
+                      <a href="Asignacion de Mobiliarios.html"
+                        >Asignación de Mobiliarios</a
+                      >
+                    </li>
+                    <li>
+                      <a href="gestion_mobiliario.html"
+                        >Gestión de Mobiliario</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://wa.link/cj230k" target="_blank"
+                        >Contáctanos</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sección de perfil de usuario -->
+    <div class="breadcumb-area">
+      <div class="bradcumbContent">
+        <div class="user-profile-section">
+          <h2>Perfil Administrador</h2>
+          <div class="user-info">
+            <!-- Mostrar el nombre de usuario y correo electrónico -->
+            <p><strong>Usuario:</strong> <span id="usuarioInfo"></span></p>
+            <p><strong>E-mail:</strong> <span id="emailInfo"></span></p>
+            <div
+              class="section-heading text-center mx-auto wow fadeInUp"
+              data-wow-delay="300ms"
+            >
+              <h3>Usuarios Registrados</h3>
+            </div>
+            <!-- Contenedor para la lista de usuarios registrados -->
+            <div id="usuariosRegistrados" class="text-center"></div>
+            <!-- Aquí se generan dinámicamente los usuarios -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <a href="Home.html" class="logo-link">
+            <img
+              src="../Imagenes/Mobiliaria-Uleam.png"
+              alt="Logo"
+              class="logo-img"
+            />
+          </a>
+        </div>
+        <div class="box">
+          <h2>MISIÓN</h2>
+          <p>
+            En la Uleam, nos comprometemos con una gestión eficiente y
+            responsable del inventario de mobiliario.
+          </p>
+        </div>
+        <div class="box">
+          <h2>SÍGUENOS</h2>
+          <div class="red-social">
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+          </div>
+        </div>
+      </div>
+      <div class="grupo-2">
+        <small
+          >&copy; 2024 Uleam - Gestión de Inventario de Mobiliario - Todos los
+          derechos reservados</small
+        >
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script>
+      // Cargar la información del usuario al cargar la página
+      window.onload = function () {
+        cargarInformacionUsuario();
+        mostrarUsuariosRegistrados();
+      };
+
+      function cargarInformacionUsuario() {
+        var usuarioActual = localStorage.getItem("usuarioActualAdmin");
+        var correoActual = localStorage.getItem("correoActualAdmin");
+
+        if (usuarioActual && correoActual) {
+          document.getElementById("usuarioInfo").textContent = usuarioActual;
+          document.getElementById("emailInfo").textContent = correoActual;
+        } else {
+          alert("No se encontró la información del usuario administrador.");
+        }
+      }
+
+      function mostrarUsuariosRegistrados() {
+        var usuariosRegistradosDiv = document.getElementById(
+          "usuariosRegistrados"
+        );
+        var registroUsuariosCliente =
+          JSON.parse(localStorage.getItem("registroUsuariosCliente")) || [];
+
+        registroUsuariosCliente.forEach((u) => {
+          var usuarioDiv = document.createElement("div");
+          usuarioDiv.classList.add("usuario-generado");
+          usuarioDiv.innerHTML = `
+            <p><strong>Nombre:</strong> ${u.nombreCompleto}</p>
+            <p><strong>Cédula:</strong> ${u.numeroCedula}</p>
+            <p><strong>Entidad:</strong> ${u.facultad}</p>
+            <p><strong>Campo de Estudio:</strong> ${u.carrera}</p>
+            <div>
+              <button onclick="toggleMobiliarios('${u.nombreUsuario}')">Ver Mobiliarios</button>
+            </div>
+            <div id="${u.nombreUsuario}_mobiliarios" class="mobiliarios" style="display: none;">
+              <!-- Contenido de los mobiliarios asignados -->
+            </div>
+          `;
+          usuariosRegistradosDiv.appendChild(usuarioDiv);
+        });
+      }
+
+      function toggleMobiliarios(nombreUsuario) {
+        var divMobiliarios = document.getElementById(
+          `${nombreUsuario}_mobiliarios`
+        );
+        var isVisible = divMobiliarios.style.display === "block";
+
+        if (isVisible) {
+          // Si ya está visible, ocultarlo
+          divMobiliarios.style.display = "none";
+        } else {
+          // Si no está visible, mostrarlo
+          mostrarMobiliarios(nombreUsuario);
+        }
+      }
+
+      function mostrarMobiliarios(nombreUsuario) {
+        var divMobiliarios = document.getElementById(
+          `${nombreUsuario}_mobiliarios`
+        );
+        var registroUsuariosCliente =
+          JSON.parse(localStorage.getItem("registroUsuariosCliente")) || [];
+        var usuario = registroUsuariosCliente.find(
+          (u) => u.nombreUsuario === nombreUsuario
+        );
+
+        if (
+          usuario &&
+          usuario.mobiliariosAsignados &&
+          usuario.mobiliariosAsignados.length > 0
+        ) {
+          divMobiliarios.innerHTML = `
+            <h4>Mobiliarios Asignados</h4>
+            <ul>
+              ${usuario.mobiliariosAsignados
+                .map(
+                  (m) => `
+                    <li>
+                      ${m.deviceType} - Código: ${m.codigoIdentificacion} - Material: ${m.material}
+                      <button onclick="eliminarMobiliario('${nombreUsuario}', '${m.codigoIdentificacion}')">Eliminar</button>
+                    </li>
+                  `
+                )
+                .join("")}
+            </ul>
+          `;
+        } else {
+          divMobiliarios.innerHTML = "<p>No tiene mobiliarios asignados.</p>";
+        }
+
+        divMobiliarios.style.display = "block";
+      }
+
+      function eliminarMobiliario(nombreUsuario, codigoIdentificacion) {
+        var confirmacion = confirm(
+          "¿Estás seguro de que deseas eliminar este mobiliario asignado?"
+        );
+
+        if (confirmacion) {
+          var registroUsuariosCliente =
+            JSON.parse(localStorage.getItem("registroUsuariosCliente")) || [];
+          var usuario = registroUsuariosCliente.find(
+            (u) => u.nombreUsuario === nombreUsuario
+          );
+
+          if (usuario && usuario.mobiliariosAsignados) {
+            // Filtrar el mobiliario a eliminar
+            usuario.mobiliariosAsignados = usuario.mobiliariosAsignados.filter(
+              (m) => m.codigoIdentificacion !== codigoIdentificacion
+            );
+            // Actualizar localStorage
+            localStorage.setItem(
+              "registroUsuariosCliente",
+              JSON.stringify(registroUsuariosCliente)
+            );
+            // Mostrar de nuevo los mobiliarios actualizados
+            mostrarMobiliarios(nombreUsuario);
+          }
+        }
+      }
+
+      function confirmarCerrarSesion() {
+        var confirmacion = confirm(
+          "¿Estás seguro de que deseas cerrar la sesión?"
+        );
+        if (confirmacion) {
+          window.location.href = "Registro-LoginAdministrador/login.html";
+        }
+      }
+    </script>
+  </body>
+</html>

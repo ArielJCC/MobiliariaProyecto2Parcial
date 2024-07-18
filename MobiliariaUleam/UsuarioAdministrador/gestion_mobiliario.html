@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <!-- Descripción del sitio -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Título -->
+    <title>Uleam - Gestión de Mobiliario</title>
+
+    <!-- Icono Página -->
+    <link rel="icon" href="../Imagenes/icon/Mobiliaria-Uleam_transparent.ico" />
+    <!-- Iconos Redes -->
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Área del encabezado -->
+    <header class="header-area">
+      <div class="top-header">
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 h-100">
+              <div
+                class="header-content h-100 d-flex align-items-center justify-content-between"
+              >
+                <a href="Home.html" class="logo-link">
+                  <img
+                    src="../Imagenes/Mobiliaria-Uleam.png"
+                    alt="Logo"
+                    class="logo-img"
+                  />
+                </a>
+                <!-- Cierre de sesión -->
+                <div class="login-content">
+                  <a href="perfil_administrador.html">Perfil &nbsp; </a>
+                  <a
+                    href="javascript:void(0);"
+                    onclick="confirmarCerrarSesion()"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Barra de navegación -->
+      <div class="academy-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+          <div class="container">
+            <nav class="classy-navbar justify-content-between" id="academyNav">
+              <div class="classy-menu">
+                <!-- Inicio del menú -->
+                <div class="classynav">
+                  <ul>
+                    <li><a href="Home.html">Inicio</a></li>
+                    <li><a href="inventario.html">Inventario</a></li>
+                    <li>
+                      <a href="Asignacion de Mobiliarios.html"
+                        >Asignación de Mobiliarios</a
+                      >
+                    </li>
+                    <li>
+                      <a href="gestion_mobiliario.html"
+                        >Gestión de Mobiliario</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://wa.link/cj230k" target="_blank"
+                        >Contáctanos</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Texto Superior -->
+    <div class="breadcumb-area">
+      <div class="bradcumbContent">
+        <h2>Gestión De Mobiliario</h2>
+      </div>
+    </div>
+    <!-- Formulario de registro -->
+    <div class="top-popular-courses-area mt-50 section-padding-100-70">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div
+              class="section-heading text-center mx-auto wow fadeInUp"
+              data-wow-delay="300ms"
+            >
+              <h3>Formulario De Registro</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-7">
+            <div class="contact-form-area wow fadeInUp" data-wow-delay="500ms">
+              <form id="miFormulario" @submit.prevent="submitForm">
+                <label for="deviceType">Tipo de Mobiliario:</label>
+                <select
+                  v-model="formData.deviceType"
+                  id="deviceType"
+                  class="form-control"
+                  size="0"
+                  required
+                >
+                  <option value="" disabled>Seleccionar</option>
+                  <option value="Mesa">Mesa</option>
+                  <option value="Escritorio">Escritorio</option>
+                  <option value="Silla">Silla</option>
+                  <option value="Banca">Banca</option>
+                  <option value="Otro">
+                    Otro, especifique en la información adicional
+                  </option>
+                </select>
+
+                <!-- Campo de selección para el material del mobiliario -->
+                <label for="material">Material:</label>
+                <select
+                  v-model="formData.material"
+                  id="material"
+                  class="form-control"
+                  size="0"
+                  required
+                >
+                  <option value="" disabled>Seleccionar</option>
+                  <option value="Madera">Madera</option>
+                  <option value="Metal">Metal</option>
+                  <option value="Melamina">Melamina</option>
+                  <option value="Plástico">Plástico</option>
+                  <option value="Otro">
+                    Otro, especifique en la información adicional
+                  </option>
+                </select>
+
+                <!-- Campos para las dimensiones del mobiliario -->
+                <div class="form-group">
+                  <label for="alto">Alto (cm):</label>
+                  <input
+                    v-model.number="formData.alto"
+                    type="number"
+                    id="alto"
+                    class="form-control"
+                    placeholder="Alto del mobiliario en cm"
+                    min="0"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ancho">Ancho (cm):</label>
+                  <input
+                    v-model.number="formData.ancho"
+                    type="number"
+                    id="ancho"
+                    class="form-control"
+                    placeholder="Ancho del mobiliario en cm"
+                    min="0"
+                    required
+                  />
+                </div>
+
+                <label for="color">Color:</label>
+                <input
+                  v-model="formData.color"
+                  type="text"
+                  id="color"
+                  class="form-control"
+                  placeholder="Color del mobiliario"
+                  pattern="[A-Za-z\s]+"
+                  title="El color solo puede contener letras"
+                  required
+                />
+                <div class="form-group">
+                  <label for="codigoIdentificacion"
+                    >Código de Identificación:</label
+                  >
+                  <input
+                    v-model="formData.codigoIdentificacion"
+                    type="text"
+                    class="form-control"
+                    id="codigoIdentificacion"
+                    placeholder="Ingrese el código de identificación único"
+                    pattern="[A-Za-z0-9]{5,}"
+                    title="El código de identificación debe contener al menos 5 caracteres alfanuméricos"
+                    required
+                  />
+                </div>
+
+                <!-- Comentarios adicionales -->
+                <label for="additionalInfo">Información adicional:</label>
+                <textarea
+                  v-model="formData.message"
+                  name="message"
+                  class="form-control"
+                  id="additionalInfo"
+                  cols="30"
+                  rows="3"
+                  placeholder="Comentarios adicionales"
+                  minlength="5"
+                  title="Por favor, completa este campo o escribe 'Ninguna' si no hay información adicional."
+                ></textarea>
+
+                <!-- Botón de registro -->
+                <button class="btn academy-btn btn-registrar" type="submit">
+                  Registrar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin formulario de registro -->
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina">
+      <div class="grupo-1">
+        <div class="box">
+          <a href="Home.html" class="logo-link">
+            <img
+              src="../Imagenes/Mobiliaria-Uleam.png"
+              alt="Logo"
+              class="logo-img"
+            />
+          </a>
+        </div>
+        <div class="box">
+          <h2>MISIÓN</h2>
+          <p>
+            En la Uleam, nos comprometemos con una gestión eficiente y
+            responsable del inventario de mobiliario.
+          </p>
+        </div>
+        <div class="box">
+          <h2>SÍGUENOS</h2>
+          <div class="red-social">
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+          </div>
+        </div>
+      </div>
+      <div class="grupo-2">
+        <small
+          >&copy; 2024 Uleam - Gestión de Inventario de Mobiliario - Todos los
+          derechos reservados</small
+        >
+      </div>
+    </footer>
+    <!-- Fin del área del pie de página -->
+
+    <!-- SweetAlert2 para mostrar notificación -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts e instacias Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+    <script>
+      new Vue({
+        el: "#miFormulario",
+        data: {
+          formData: {
+            deviceType: "",
+            material: "",
+            alto: null,
+            ancho: null,
+            color: "",
+            codigoIdentificacion: "",
+            message: "",
+          },
+        },
+        methods: {
+          submitForm() {
+            // Validar si el formulario es válido
+            const form = this.$el;
+            if (form.checkValidity() && this.formData.message.trim() !== "") {
+              // Guardar los datos en el localStorage
+              const mobiliarios =
+                JSON.parse(localStorage.getItem("registrosMobiliario")) || [];
+              mobiliarios.push(this.formData);
+              localStorage.setItem(
+                "registrosMobiliario",
+                JSON.stringify(mobiliarios)
+              );
+
+              // Mostrar mensaje de éxito
+              Swal.fire({
+                title: "Registro Exitoso",
+                text: "El mobiliario ha sido registrado exitosamente.",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+              });
+
+              // Resetear el formulario
+              this.formData = {
+                deviceType: "",
+                material: "",
+                alto: null,
+                ancho: null,
+                color: "",
+                codigoIdentificacion: "",
+                message: "",
+              };
+            } else {
+              // Mostrar mensaje de error si el formulario no es válido
+              Swal.fire({
+                title: "Error en el Registro",
+                text: "Por favor, completa todos los campos correctamente.",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+              });
+            }
+          },
+        },
+      });
+      // Función para confirmar el cierre de sesión
+      function confirmarCerrarSesion() {
+        // Mostrar el mensaje de confirmación
+        var confirmacion = confirm(
+          "¿Estás seguro de que deseas cerrar la sesión?"
+        );
+        // Si el usuario hace clic en "Aceptar", redirige a la página de inicio de sesión
+        if (confirmacion) {
+          window.location.href = "Registro-LoginAdministrador/login.html";
+        }
+        // Si el usuario hace clic en "Cancelar", no hace nada
+      }
+    </script>
+  </body>
+</html>

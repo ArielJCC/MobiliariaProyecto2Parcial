@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Uleam - Inventario de Mobiliarios</title>
+    <link
+      rel="icon"
+      href="../Imagenes/icon/Mobiliaria-UleamAdmin_transparent.ico"
+    />
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styleC.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Área del Encabezado -->
+      <header class="header-area">
+        <div class="top-header">
+          <div class="container h-100">
+            <div class="row h-100">
+              <div class="col-12 h-100">
+                <div
+                  class="header-content h-100 d-flex align-items-center justify-content-between"
+                >
+                  <a href="HomeCliente.html" class="logo-link">
+                    <img
+                      src="../Imagenes/Mobiliaria-Uleam.png"
+                      alt="Logo"
+                      class="logo-img"
+                    />
+                  </a>
+                  <!-- Cierre de sesión -->
+                  <div class="login-content">
+                    <a href="perfilCliente.html">Perfil &nbsp; </a>
+                    <a
+                      href="javascript:void(0);"
+                      onclick="confirmarCerrarSesion()"
+                      >Cerrar Sesión</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Menú de navegación -->
+        <div class="academy-main-menu">
+          <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+              <nav
+                class="classy-navbar justify-content-between"
+                id="academyNav"
+              >
+                <div class="classy-navbar-toggler">
+                  <span class="navbarToggler"
+                    ><span></span><span></span><span></span
+                  ></span>
+                </div>
+                <div class="classy-menu">
+                  <div class="classycloseIcon">
+                    <div class="cross-wrap">
+                      <span class="top"></span><span class="bottom"></span>
+                    </div>
+                  </div>
+                  <div class="classynav">
+                    <ul>
+                      <li><a href="HomeCliente.html">Inicio</a></li>
+                      <li><a href="inventarioCliente.html">Inventario</a></li>
+                      <li>
+                        <a href="https://wa.link/cj230k" target="_blank"
+                          >Contáctanos</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Texto Superior -->
+      <div class="breadcumb-area">
+        <div class="bradcumbContent">
+          <h2>Inventario</h2>
+        </div>
+      </div>
+      <!-- Sección de Inventario -->
+      <div class="top-popular-courses-area mt-50 section-padding-100-70">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="section-heading text-center mx-auto wow fadeInUp"
+                data-wow-delay="300ms"
+              >
+                <h3>Mobiliarios Registrados</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="inventarioLista">
+            <!-- Aquí se añadirán dinámicamente los cuadros de inventario -->
+            <div
+              v-for="(registro, index) in registros"
+              :key="index"
+              class="col-12 col-md-6 col-lg-3 mb-30"
+            >
+              <div class="single-contact-info text-center">
+                <h6>Tipo de Mobiliario: {{ registro.deviceType }}</h6>
+                <p><strong>Material</strong>: {{ registro.material }}</p>
+                <p><strong>Color</strong>: {{ registro.color }}</p>
+                <p><strong>Alto</strong>: {{ registro.alto }} cm</p>
+                <p><strong>Ancho</strong>: {{ registro.ancho }} cm</p>
+                <p>
+                  <strong>Código Único</strong>: {{
+                  registro.codigoIdentificacion }}
+                </p>
+                <p>
+                  <strong>Información adicional</strong>: {{ registro.message }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pie de página -->
+      <footer class="pie-pagina">
+        <div class="grupo-1">
+          <div class="box">
+            <a href="HomeCliente.html" class="logo-link">
+              <img
+                src="../Imagenes/Mobiliaria-Uleam.png"
+                alt="Logo"
+                class="logo-img"
+              />
+            </a>
+          </div>
+          <div class="box">
+            <h2>MISIÓN</h2>
+            <p>
+              En la Uleam, nos comprometemos con una gestión eficiente y
+              responsable del inventario de mobiliario.
+            </p>
+          </div>
+          <div class="box">
+            <h2>SÍGUENOS</h2>
+            <div class="red-social">
+              <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+              <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-2">
+          <small
+            >&copy; 2024 Uleam - Gestión de Inventario de Mobiliario - Todos los
+            derechos reservados</small
+          >
+        </div>
+      </footer>
+    </div>
+    <!-- JavaScript e instancia Vue -->
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          registros: [],
+        },
+        mounted() {
+          this.cargarRegistros();
+        },
+        methods: {
+          cargarRegistros() {
+            // Cargar registros desde localStorage al inicio
+            const registrosGuardados = JSON.parse(
+              localStorage.getItem("registrosMobiliario")
+            );
+            if (registrosGuardados) {
+              this.registros = registrosGuardados;
+            }
+          },
+        },
+      });
+      //Confirmar el cierre de sesión
+      function confirmarCerrarSesion() {
+        // Mostrar el mensaje de confirmación
+        var confirmacion = confirm(
+          "¿Estás seguro de que deseas cerrar la sesión?"
+        );
+        // Si el usuario hace clic en "Aceptar", redirige a la página de inicio de sesión
+        if (confirmacion) {
+          window.location.href = "Registro-LoginCliente/loginCliente.html";
+        }
+        // Si el usuario hace clic en "Cancelar", no hace nada
+      }
+    </script>
+  </body>
+</html>

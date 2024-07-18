@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="stylesCli.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Icono Página -->
+    <link rel="icon" href="IMGA/Mobiliaria-UleamAdmin_transparent.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  </head>
+  <body
+    style="background-image: url('IMGA/photo2.jpg'); background-size: cover"
+  >
+    <div id="app" class="container">
+      <form @submit.prevent="submitForm">
+        <h2>REGISTRATE</h2>
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            v-model="nombreCompleto"
+            placeholder="Nombre Completo"
+            required
+            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+            title="Ingrese solo letras"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            v-model="nombreUsuario"
+            placeholder="Nombre de usuario"
+            required
+            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+"
+            title="Ingrese solo letras y números"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-id-card"></i>
+          <input
+            type="text"
+            v-model="numeroCedula"
+            placeholder="Número de Cédula"
+            required
+            pattern="[0-9]{10}"
+            title="Ingrese un número de cédula válido(10 DÍgitos)"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            v-model="correoElectronico"
+            placeholder="Correo Electrónico"
+            required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            title="Ingrese un correo electrónico válido"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-phone"></i>
+          <input
+            type="tel"
+            v-model="numeroTelefono"
+            placeholder="Número de Teléfono"
+            required
+            pattern="[0-9]{10}"
+            title="Ingrese un número de teléfono válido (10 Dígitos)"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            v-model="contrasena"
+            placeholder="Contraseña"
+            required
+            minlength="6"
+            title="La contraseña debe tener al menos 6 caracteres"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            v-model="confirmarContrasena"
+            placeholder="Confirmar Contraseña"
+            required
+            minlength="6"
+            title="La contraseña debe tener al menos 6 caracteres"
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-university"></i>
+          <select v-model="facultad" @change="updateCarreras" required>
+            <option value="">Entidad a la que pertenece</option>
+            <option value="FACULTAD CIENCIAS DE LA SALUD">
+              FACULTAD CIENCIAS DE LA SALUD
+            </option>
+            <option
+              value="FACULTAD CIENCIAS ADMINISTRATIVAS, CONTABLES Y COMERCIO"
+            >
+              FACULTAD CIENCIAS ADMINISTRATIVAS, CONTABLES Y COMERCIO
+            </option>
+            <option value="FACULTAD DE EDUCACIÓN TURISMO ARTES Y HUMANIDADES">
+              FACULTAD DE EDUCACIÓN TURISMO ARTES Y HUMANIDADES
+            </option>
+            <option value="FACULTAD INGENIERÍA, INDUSTRIA Y ARQUITECTURA">
+              FACULTAD INGENIERÍA, INDUSTRIA Y ARQUITECTURA
+            </option>
+            <option value="FACULTAD CIENCIAS DE LA VIDA Y TECNOLOGÍAS">
+              FACULTAD CIENCIAS DE LA VIDA Y TECNOLOGÍAS
+            </option>
+            <option value="FACULTAD DE CIENCIAS SOCIALES DERECHO Y BIENESTAR">
+              FACULTAD DE CIENCIAS SOCIALES DERECHO Y BIENESTAR
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-graduation-cap"></i>
+          <select v-model="carrera" required>
+            <option value="">Campo de estudio</option>
+            <option v-for="carrera in carreras" :value="carrera">
+              {{ carrera }}
+            </option>
+          </select>
+        </div>
+        <button type="submit">Registrarse</button>
+        <p style="text-align: center">
+          ¿Ya tienes cuenta? <a href="loginCliente.html">Iniciar sesión</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          nombreCompleto: "",
+          nombreUsuario: "",
+          numeroCedula: "",
+          correoElectronico: "",
+          numeroTelefono: "",
+          contrasena: "",
+          confirmarContrasena: "",
+          facultad: "",
+          carrera: "",
+          carreras: [],
+        },
+
+        methods: {
+          updateCarreras() {
+            if (this.facultad === "FACULTAD CIENCIAS DE LA SALUD") {
+              this.carreras = [
+                "Medicina",
+                "Odontología",
+                "Enfermería",
+                "Fisioterapia",
+                "Fonoaudiología",
+                "Laboratorio Clínico",
+                "Terapia Ocupacional",
+                "Psicología",
+              ];
+            } else if (
+              this.facultad ===
+              "FACULTAD CIENCIAS ADMINISTRATIVAS, CONTABLES Y COMERCIO"
+            ) {
+              this.carreras = [
+                "Administración de Empresas",
+                "Mercadotecnia",
+                "Contabilidad y Auditoría",
+                "Auditoría y Control de Gestión",
+                "Finanzas",
+                "Comercio Exterior",
+                "Gestión de la Información Gerencial",
+                "Gestión del Talento Humano",
+              ];
+            } else if (
+              this.facultad ===
+              "FACULTAD DE EDUCACIÓN TURISMO ARTES Y HUMANIDADES"
+            ) {
+              this.carreras = [
+                "Educación Inicial",
+                "Educación Especial",
+                "Psicología Educativa",
+                "Educación Básica",
+                "Pedagogía de la Actividad Física y el Deporte",
+                "Pedagogía de la Lengua y la Literatura",
+                "Pedagogía de los Idiomas Nacionales y Extranjeros",
+                "Turismo",
+                "Hospitalidad y Hotelería",
+                "Artes Plásticas",
+                "Sociología",
+                "Artes Escénicas",
+              ];
+            } else if (
+              this.facultad === "FACULTAD INGENIERÍA, INDUSTRIA Y ARQUITECTURA"
+            ) {
+              this.carreras = [
+                "Ingeniería Civil",
+                "Ingeniería Marítima",
+                "Electricidad",
+                "Arquitectura",
+                "Ingeniería Industrial",
+                "Ingeniería de Alimentos",
+              ];
+            } else if (
+              this.facultad === "FACULTAD CIENCIAS DE LA VIDA Y TECNOLOGÍAS"
+            ) {
+              this.carreras = [
+                "Ingeniería Agropecuaria",
+                "Agronegocios",
+                "Ingeniería Agroindustrial",
+                "Ingeniería Ambiental",
+                "Ingeniería en Tecnologías de la Información",
+                "Ingeniería en Software",
+                "Ingeniería en Sistema",
+                "Biología",
+              ];
+            } else if (
+              this.facultad ===
+              "FACULTAD DE CIENCIAS SOCIALES DERECHO Y BIENESTAR"
+            ) {
+              this.carreras = [
+                "Derecho",
+                "Trabajo Social",
+                "Criminología y Ciencias Forenses",
+                "Economía",
+                "Comunicación",
+              ];
+            } else {
+              this.carreras = [];
+            }
+          },
+          submitForm() {
+            if (this.validarFormulario()) {
+              var usuario = {
+                nombreCompleto: this.nombreCompleto,
+                nombreUsuario: this.nombreUsuario,
+                numeroCedula: this.numeroCedula,
+                correoElectronico: this.correoElectronico,
+                numeroTelefono: this.numeroTelefono,
+                contrasena: this.contrasena,
+                facultad: this.facultad,
+                carrera: this.carrera,
+              };
+              // Obtener registros existentes de usuarios
+              var registroUsuariosCliente =
+                JSON.parse(localStorage.getItem("registroUsuariosCliente")) ||
+                [];
+              // Agregar nuevo usuario al registro
+              registroUsuariosCliente.push(usuario);
+              // Guardar en localStorage
+              localStorage.setItem(
+                "registroUsuariosCliente",
+                JSON.stringify(registroUsuariosCliente)
+              );
+              // Guardar nombre de usuario y correo electrónico actual
+              localStorage.setItem("usuarioActualCliente", this.nombreUsuario);
+              localStorage.setItem(
+                "correoElectronicoActualCliente",
+                this.correoElectronico
+              );
+              window.location.href = "loginCliente.html";
+            } else {
+              alert(
+                "Por favor, verifica que todos los campos estén correctos."
+              );
+            }
+          },
+          validarFormulario() {
+            if (this.contrasena !== this.confirmarContrasena) {
+              alert("Las contraseñas no coinciden. Por favor, verifique.");
+              return false;
+            }
+            return true;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

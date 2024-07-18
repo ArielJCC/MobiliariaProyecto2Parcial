@@ -1,0 +1,672 @@
+/* Estilo general */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Encabezado */
+
+.header-area {
+  background-color: #3b5738;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.top-header {
+  padding: 10px 0;
+}
+
+.academy-logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+.login-content a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.login-content a:hover {
+  text-decoration: underline;
+}
+/* Alinear el contenido a la derecha */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Menú de navegación */
+
+.academy-main-menu {
+  background-color: #222222;
+}
+
+.classy-nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.classy-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.classy-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.classy-menu ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.classy-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.classy-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.calling-info {
+  margin-left: auto;
+}
+
+.call-center a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Home */
+
+.hero-area {
+  background-color: #f4f4f4;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.hero-slides-content h4 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.hero-slides-content h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #945414;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+/*:::::Pie de Pagina*/
+.pie-pagina{
+    width: 100%;
+    background-color: #3b5738;
+}
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pie-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+.pie-pagina .grupo-1 .box h2{
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-pagina .grupo-1 .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+.pie-pagina .grupo-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #222222;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.pie-pagina .grupo-1 .red-social a:hover{
+    color: rgb(235, 107, 22);
+}
+.pie-pagina .grupo-2{
+    background-color: #222222;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .pie-pagina .grupo-1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+        /* Estilos para la sección del héroe */
+        .hero-area {
+          position: relative;
+          height: 100vh; /* Ajusta la altura según tus necesidades */
+          background-size: cover;
+          background-position: center;
+          background-image: url('../Imagenes/photo1.jpg'); /* Ruta de la imagen */
+          color: #dddddd;
+          display: flex;
+          justify-content: flex-start; /* Alinea los elementos a la izquierda horizontalmente */
+          align-items: center; /* Centra los elementos verticalmente */
+          padding: 20px; /* Espacio adicional alrededor del contenido */
+      }
+      
+      /* Estilos para el contenido de la diapositiva */
+      .hero-slides-content {
+          max-width: 50%; /* Ajusta el ancho del contenido */
+          text-align: left; /* Alinea el texto a la izquierda */
+      }
+      
+      /* Estilos para el texto dentro de la diapositiva */
+      .hero-slides-content h2 {
+          font-size: 50px; /* Tamaño del texto grande */
+          font-weight: bold;
+          margin-bottom: 20px;
+      }
+      
+      .hero-slides-content p {
+          font-size: 16px; /* Tamaño del texto pequeño */
+          margin-bottom: 30px;
+          color: #e0d6d6; /* Color del texto pequeño */
+      }
+      
+      .btn.academy-btn {
+          text-align: left; /* Alinea el botón a la izquierda */
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #5cb85c;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+      }
+/* Estilo del área de migas de pan */
+.breadcumb-area {
+  background-size: cover;
+  background-position: center;
+  padding: 10px 0;
+  text-align: center;
+  color: #000000;
+}
+
+.breadcumbContent h2 {
+  font-size: 48px;
+}
+
+/* Estilo del área de contacto */
+.contact-area {
+  padding: 50px 0; /* Reducido de 200px a 50px para ajuste visual */
+}
+
+.contact-information {
+  text-align: left;
+}
+
+.contact-information h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-information p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #000000;
+}
+
+/* Estilo del inventario */
+#inventarioLista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Distribución equitativa entre elementos */
+}
+
+.single-contact-info {
+  width: calc(300px); /* Aproximadamente 33.33% del ancho menos el margen */
+  background-color: #f9f9f9;
+  border: 1px solid #15c52d;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  min-height: 200px; /* Altura mínima para asegurar que todos tengan al menos este tamaño */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  text-align: center; /* Centra horizontalmente */
+}
+
+.single-contact-info:hover {
+  transform: translateY(-5px);
+}
+.single-contact-info h6 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.single-contact-info p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.info-body {
+  flex-grow: 1; /* La parte del cuerpo ocupa todo el espacio disponible */
+}
+
+.info-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.info-footer {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.btn-edit,
+.btn-delete {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 992px) {
+  .single-contact-info {
+    width: calc(50% - 20px); /* Aproximadamente 50% del ancho menos el margen en pantallas más pequeñas */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .single-contact-info {
+    width: calc(100% - 20px); /* Ancho completo menos el margen en dispositivos móviles */
+  }
+}
+
+/* Estilo del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.modal-content button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+  .classy-menu ul li {
+    margin-right: 10px;
+  }
+}
+/* Estilos para el área del formulario de contacto */
+.contact-form-area {
+  background-color: #f9f9f9; /* Color de fondo */
+  border: 1px solid #ddd; /* Borde del área del formulario */
+  border-radius: 5px; /* Borde redondeado */
+  padding: 30px; /* Espaciado interno */
+  box-shadow: 0 0 10px rgba(170, 51, 51, 0.1); /* Sombra */
+  max-width: 700px;
+  margin: 0 auto;
+}
+/* Estilos para centrar y modificar textos específicos */
+.section-heading {
+  text-align: center; /* Centra el contenido */
+  margin-bottom: 30px; /* Espacio inferior */
+}
+
+.section-heading h2,
+.section-heading h3,
+.section-heading p {
+  margin: 0; /* Elimina márgenes para evitar problemas de alineación */
+}
+
+.section-heading h2 {
+  font-size: 48px; /* Tamaño de fuente más grande para h2 */
+  color: #000000; /* Color de texto */
+}
+
+.section-heading h3 {
+  font-size: 36px; /* Tamaño de fuente más grande para h3 */
+  color: #1d1d1d; /* Color de texto */
+}
+
+.section-heading p {
+  font-size: 20px; /* Tamaño de fuente más grande para p */
+  color: #000000; /* Color de texto */
+}
+
+
+
+.contact-form-area form {
+  max-width: 600px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrar el formulario horizontalmente */
+}
+
+.contact-form-area label {
+  font-size: 16px; /* Tamaño de fuente para etiquetas */
+  margin-bottom: 8px; /* Espacio inferior entre etiquetas */
+  color: #000000; /* Color de texto */
+}
+
+.contact-form-area input[type="text"],
+.contact-form-area select,
+.contact-form-area textarea {
+  width: 100%; /* Ancho completo */
+  min-height: 50px; /* Altura mínima del área de texto */
+  max-height: 1%; /* Altura máxima del área de texto */
+  padding: 10px; /* Relleno interno */
+  margin-bottom: 10px; /* Espacio inferior */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 3px; /* Borde redondeado */
+  font-size: 14px; /* Tamaño de fuente */
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+.contact-form-area textarea {
+  height: 100px; /* Altura del área de texto */
+}
+
+.contact-form-area button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color de texto del botón */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Relleno interno del botón */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cursor tipo puntero */
+  font-size: 16px; /* Tamaño de fuente del botón */
+}
+
+.contact-form-area button:hover {
+  background-color: #444; /* Color de fondo al pasar el cursor */
+}
+/* Estilos para el formulario de asignación de mobiliario */
+#asignarMobiliarioForm {
+  background-color: #f9f9f9; /* Color de fondo */
+  border: 1px solid #ddd; /* Borde del formulario */
+  border-radius: 5px; /* Borde redondeado */
+  padding: 30px; /* Espaciado interno */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  max-width: 600px; /* Ancho máximo del formulario */
+  margin: 0 auto 50px; /* Centrado horizontal y espacio inferior */
+}
+
+#asignarMobiliarioForm .form-group {
+  margin-bottom: 20px; /* Espacio entre grupos de campos */
+}
+
+#asignarMobiliarioForm label {
+  font-size: 16px; /* Tamaño de fuente para etiquetas */
+  margin-bottom: 8px; /* Espacio inferior entre etiquetas */
+  color: #000000; /* Color de texto */
+}
+
+#asignarMobiliarioForm input[type="text"],
+#asignarMobiliarioForm select {
+  width: 100%; /* Ancho completo */
+  min-height: 50px; /* Altura mínima */
+  padding: 10px; /* Relleno interno */
+  margin-bottom: 10px; /* Espacio inferior */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 3px; /* Borde redondeado */
+  font-size: 14px; /* Tamaño de fuente */
+}
+
+
+#asignarMobiliarioForm textarea {
+  width: 100%; /* Ancho completo */
+  min-height: 150px; /* Altura mínima */
+  padding: 10px; /* Relleno interno */
+  margin-bottom: 10px; /* Espacio inferior */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 3px; /* Borde redondeado */
+  font-size: 14px; /* Tamaño de fuente */
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+#asignarMobiliarioForm button {
+  background-color: #333; /* Color de fondo del botón */
+  color: #fff; /* Color de texto del botón */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Relleno interno del botón */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cursor tipo puntero */
+  font-size: 16px; /* Tamaño de fuente del botón */
+  display: block; /* Convertir el botón en bloque para centrarlo */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+.top-popular-courses-area {
+  min-height: 645px; /* Ajusta la altura mínima según sea necesario */
+}
+
+#asignarMobiliarioForm button:hover {
+  background-color: #444; /* Color de fondo al pasar el cursor */
+}
+.logo-img {
+  width: 200px; /* Ancho deseado del logo */
+  height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Estilos para los campos de Ancho y Alto */
+#alto,
+#ancho {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+/* Estilos para los campos de entrada Alto y Ancho */
+#modalEditarEliminar #editAlto,
+#modalEditarEliminar #editAncho {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#modalEditarEliminar #editAlto:focus,
+#modalEditarEliminar #editAncho:focus {
+  outline: none;
+  border-color: #007bff; /* Color del borde al estar enfocado */
+}
+ /* Estilo para centrar solo el botón Registrar */
+ #miFormulario .btn-registrar {
+  display: block;
+  margin: 0 auto;
+  
+}
+/*Estilos del perfil CLiente*/
+.user-info {
+  margin-top: 20px; /* Espacio superior */
+  max-width: 600px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centrar el contenedor horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: #fff; /* Color de fondo del contenedor */
+  border: 1px solid #ddd; /* Borde del contenedor */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.user-info h3 {
+  color: #333; /* Color del título */
+  font-size: 24px; /* Tamaño del título */
+  text-align: center; /* Alineación del texto */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.user-info ul {
+  list-style-type: none; /* Quita los puntos de la lista */
+  padding: 0;
+}
+
+.user-info li {
+  background-color: #f2f2f2; /* Color de fondo del elemento */
+  border: 1px solid #ddd; /* Borde del elemento */
+  margin-bottom: 10px; /* Espacio inferior entre elementos */
+  padding: 10px; /* Espacio interno */
+}
+
+.user-info p {
+  text-align: center; /* Alineación del texto */
+  margin-top: 10px; /* Espacio superior */
+  font-size: 18px; /* Tamaño de fuente */
+}
+
+.user-info p strong {
+  font-weight: bold; /* Texto en negrita */
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.breadcumb-area {
+  flex: 1;
+}
+
+.pie-pagina {
+  flex-shrink: 0;
+}
